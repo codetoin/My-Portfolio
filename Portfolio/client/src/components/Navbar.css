@@ -1,0 +1,104 @@
+.navbar-wrapper {
+  width: 100%;
+  background: rgba(18, 18, 18, 0.85);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 1.2rem clamp(1.5rem, 4vw, 4rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* BRAND */
+.navbar-brand a {
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--text-main);
+  text-decoration: none;
+}
+
+/* LINKS (DESKTOP) */
+.navbar-links {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.navbar-links a {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  position: relative;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.navbar-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.navbar-links a:hover {
+  color: var(--text-main);
+}
+
+.navbar-links a:hover::after,
+.navbar-links a.active::after {
+  width: 100%;
+}
+
+.navbar-links a.active {
+  color: var(--text-main);
+}
+
+/* HAMBURGER BUTTON */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-main);
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+/* MOBILE MENU */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #121212;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem 0;
+    transform: translateY(-20px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+
+  .navbar-links.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
